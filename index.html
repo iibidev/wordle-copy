@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./assets/favicon.webp">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" integrity="sha512-XcIsjKMcuVe0Ucj/xgIXQnytNwBttJbNjltBV18IOnru2lDPe9KRRyvCXw6Y5H415vbBLRm8+q6fmLUU7DfO6Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Guess the daily word - Wordle</title>
+</head>
+<body>
+    <nav>
+        <div>
+            <i class="ri-question-line"></i>
+        </div>
+        <img class="logo" src="./assets/logo.svg" alt="wordle logo">
+        <div>
+            <i class="ri-stairs-line"></i>
+            <i class="ri-settings-3-fill"></i>
+        </div>
+    </nav>
+    <div class="game">
+        <div class="difficulty">
+            <label for="difficulty">Change difficulty</label>
+            <select name="difficulty" id="difficulty" onchange="createBoard(event.target.value)">
+                <option value="EASY">Easy</option>
+                <option value="NORMAL" selected>Normal</option>
+                <option value="IMPOSSIBLE">Imposible</option>
+            </select>
+        </div>
+        <div class="board"></div>
+        <button class="guess-btn" onclick="checkGuess()">Guess the word <i class="ri-search-line"></i></button>
+    </div>
+
+    <div class="black-background">
+        <div class="modal modal-win">
+            <h2>YOU WON 😎</h2>
+            <p id="win-msg" class="modal-subt">You guessed the word "arbol" in 5 attempts</p>
+            <button onclick="resetGame()">Play Again!</button>
+        </div>
+        <div class="modal modal-lose">
+            <h2>YOU LOST 😭</h2>
+            <p id="lose-msg" class="modal-subt">You haven't guessed the word, try again</p>
+            <button onclick="resetGame()">Play Again!</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@hiseb/confetti@2.2.0/dist/confetti.min.js"></script>
+    <script src="./main.js"></script>
+</body>
+</html>
