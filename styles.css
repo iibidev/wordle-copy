@@ -4,9 +4,51 @@
     box-sizing: border-box;
 }
 
+:root {
+    /* Fondo */
+    --background: #ffffff;
+    --text: #121213;
+
+    /* Bordes */
+    --border: #d3d6da;
+    --border-filled: #878a8c;
+
+    /* Estados Wordle */
+    --correct: #6aaa64;   /* verde */
+    --present: #c9b458;   /* amarillo */
+    --absent: #787c7e;    /* gris */
+
+    /* Botones */
+    --button: #3aaa35;
+    --button-hover: #2f922c;
+}
+
+[data-theme="dark"] {
+
+    /* Fondo */
+    --background: #121213;
+    --text: #ffffff;
+
+    /* Bordes */
+    --border: #3a3a3c;
+    --border-filled: #565758;
+
+    /* Estados Wordle */
+    --correct: #538d4e;
+    --present: #b59f3b;
+    --absent: #3a3a3c;
+
+    /* Botones */
+    --button: #538d4e;
+    --button-hover: #467842;
+}
+
 body{
     min-height: 100dvh;
     font-family: "Libre Franklin", sans-serif;
+    background-color: var(--background);
+    color: var(--text);
+    transition: ease .4s;
 }
 
 button, select{
@@ -19,7 +61,7 @@ nav{
     grid-template-columns: repeat(3, 1fr);
     padding: 20px 16px;
     gap: 24px;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid var(--border-filled);
 
     & div{
         display: flex;
@@ -32,14 +74,15 @@ nav{
         }
 
         & i{
+            cursor: pointer;
             font-size: 24px;
         }
     }
 }
 
-.logo{
-    width: 200px;
-    justify-self: center;
+.title{
+    text-align: center;
+    font-size: 52px;
 }
 
 .game{
@@ -55,9 +98,15 @@ nav{
 .difficulty{
     display: flex;
     justify-content: flex-start;
+    align-items: center;
     width: 100%;
     gap: 8px;
     margin-bottom: 24px;
+
+    & select{
+        padding: 4px 8px;
+        border-radius: 4px;
+    }
 }
 
 .board{
@@ -73,7 +122,7 @@ nav{
 
     & input{
         width: 40px;
-        outline: 2px solid gray;
+        box-shadow: 0 0 0 2px var(--border);
         border: none;
         border-radius: 8px;
         text-align: center;
@@ -83,7 +132,7 @@ nav{
         caret-color: transparent;
 
         &:focus{
-            outline: 3px solid green;
+            outline: 3px solid var(--button);
         }
     }
 }
@@ -105,20 +154,31 @@ nav{
     font-weight: 600;
     margin-top: 16px;
     color: white;
-    background-color: #40ae40;
+    background-color: var(--button);
     cursor: pointer;
+    transition: ease-out .2s;
+
+    &:hover{
+        background-color: var(--button-hover);
+    }
 }
 
 .correct{
-    background-color: green;
+    box-shadow: 0 0 0 2px var(--correct) !important;
+    color: var(--text);
+    background-color: var(--correct);
 }
 
 .missplaced{
-    background-color: orange;
+    box-shadow: 0 0 0 2px var(--present) !important;
+    color: var(--text);
+    background-color: var(--present);
 }
 
 .incorrect{
-    background-color: gray;
+    box-shadow: 0 0 0 2px var(--absent) !important;
+    color: var(--text);
+    background-color: var(--absent);
 }
 
 .black-background{
@@ -144,7 +204,7 @@ nav{
     border-radius: 12px;
     margin-inline: 16px;
     opacity: 0;
-    background-color: white;
+    background-color: var(--background);
     animation: show ease-out .4s forwards .3s;
 
     & button{
@@ -155,7 +215,12 @@ nav{
         cursor: pointer;
         border: none;
         color: white;
-        background-color: #40ae40;
+        background-color: var(--button);
+        transition: ease-out .2s;
+
+        &:hover{
+            background-color: var(--button-hover);
+        }
     }
 }
 
@@ -164,10 +229,23 @@ nav{
     text-align: center;
 }
 
+.statusHistory{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    width: 100%;
+    max-width: 150px;
+    gap: 8px;
+    margin-top: 12px;
+
+    & span{
+        aspect-ratio: 1/1;
+        border-radius: 4px;
+    }
+}
 
 @media (width < 500px){
-    .logo{
-        width: 150px;
+    .title{
+        font-size: 34px;
     }
 }
 

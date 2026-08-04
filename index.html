@@ -14,37 +14,40 @@
 <body>
     <nav>
         <div>
-            <i class="ri-question-line"></i>
+            <!-- <i class="ri-question-line"></i> -->
         </div>
-        <img class="logo" src="./assets/logo.svg" alt="wordle logo">
+        <h1 class="title">Wordle</h1>
         <div>
-            <i class="ri-stairs-line"></i>
-            <i class="ri-settings-3-fill"></i>
+            <i id="theme-icon" class="ri-moon-line" onclick="changeTheme()"></i>
         </div>
     </nav>
     <div class="game">
         <div class="difficulty">
-            <label for="difficulty">Change difficulty</label>
+            <label for="difficulty">Cambiar dificultad</label>
             <select name="difficulty" id="difficulty" onchange="createBoard(event.target.value)">
-                <option value="EASY">Easy</option>
+                <option value="EASY">Fácil</option>
                 <option value="NORMAL" selected>Normal</option>
                 <option value="IMPOSSIBLE">Imposible</option>
             </select>
         </div>
         <div class="board"></div>
-        <button class="guess-btn" onclick="checkGuess()">Guess the word <i class="ri-search-line"></i></button>
+        <button class="guess-btn" onclick="checkGuess()">Adivinar la palabra <i class="ri-search-line"></i></button>
     </div>
 
     <div class="black-background">
         <div class="modal modal-win">
-            <h2>YOU WON 😎</h2>
-            <p id="win-msg" class="modal-subt">You guessed the word "arbol" in 5 attempts</p>
-            <button onclick="resetGame()">Play Again!</button>
+            <h2>HAS GANADO 😎</h2>
+            <p id="win-msg" class="modal-subt"></p>
+            <div class="statusHistory"></div>
+            <button onclick="resetGame()">Jugar de nuevo!</button>
         </div>
         <div class="modal modal-lose">
-            <h2>YOU LOST 😭</h2>
-            <p id="lose-msg" class="modal-subt">You haven't guessed the word, try again</p>
-            <button onclick="resetGame()">Play Again!</button>
+            <h2>HAS PERDIDO 😭</h2>
+            <p id="lose-msg" class="modal-subt"></p>
+            <div class="statusHistory">
+
+            </div>
+            <button onclick="resetGame()">Jugar de nuevo!</button>
         </div>
     </div>
 
