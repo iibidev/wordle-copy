@@ -258,3 +258,9 @@ function changeTheme(){
         $themeIcon.classList.add("ri-sun-line");
     }
 }
+
+if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./service-worker.js");
+    });
+}
